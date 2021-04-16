@@ -1,6 +1,7 @@
 # athena21
 <<<<<<< HEAD
-Hi I'm Magda
+
+>Hi I'm Magda and a lol
 =======
 
 Hellooo from Sophie
