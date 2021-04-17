@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  h1 Pending Donations
+  p.lead Here is what local NHS supporters are offering.
+  hr
+
+  ul
+    for donation in donations
+      li= donation.item
+      li = donation.photo
+      li Donated by = donation.donatedby
