@@ -1,5 +1,6 @@
 const Donation = require('../models/Donation');
 
+
 /**
  * GET /donate
  * load donate page.
@@ -31,7 +32,7 @@ exports.postDonate = (req, res, next) => {
             newDon.photo = '/uploads/' + req.file.filename;
         }
     }
-    */
+ */
     let newDon = new Donation();
     newDon.item = req.body.item;
     newDon.donatedby = req.body.donatedby;
@@ -44,4 +45,6 @@ exports.postDonate = (req, res, next) => {
             return;
         }
     })
+
+    res.send("File upload successfully");
 };

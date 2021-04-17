@@ -1,7 +1,7 @@
 .navbar.navbar-light.fixed-top.navbar-expand-lg.bg-light
   .container
     a.navbar-brand(href='/')
-      i.fas.fa-cube
+      img(src='https://nhs-prod.global.ssl.fastly.net/binaries/content/gallery/website/about-nhs-digital/corporate-information-and-documents/nhs-digitals-style-guidelines/logos/nhs-digital-logo_nhs-blue_left.svg', style='width:50px;height:50px;')
       | Donate to NHS Charity Shops
     button.navbar-toggler(type='button', data-toggle='collapse', data-target='.navbar-collapse')
       span.sr-only Toggle navigation
@@ -12,6 +12,8 @@
           a.nav-link(href='/') Home
         li.nav-item(class=(title === 'Donations') ? 'active' : undefined)
           a.nav-link(href='/donations') Pending donations
+        li.nav-item(class=(title === 'Donate') ? 'active' : undefined)
+          a.nav-link(href='/donate') Donate
         li.nav-item(class=(title === 'Contact') ? 'active' : undefined)
           a.nav-link(href='/contact') Contact
       ul.nav.navbar-nav.ml-auto
