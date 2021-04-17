@@ -16,4 +16,14 @@ block content
         .form-group.row
           .col-sm-3 Donated by
           .col-sm-3=donation.donatedby
+        .form-group.row 
+          .col-sm-3 Status 
+          .col-sm-3=donation.status
+          .col-sm-3 
+            button.btn.btn-success(type='submit')
+              | Accept
+          .col-sm-3
+            button.btn.btn-danger(type='submit')
+              | Reject
+            
         hr
