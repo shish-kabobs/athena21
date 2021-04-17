@@ -1,0 +1,28 @@
+extends layout
+
+
+block content
+  .page-header
+    h3 Offer an item
+    .container
+     form.form-horizontal(action='/donate', enctype='multipart/form-data', method='POST')
+        input(type='hidden', name='_csrf', value=_csrf)
+        .form-group.row
+          label.col-sm-2.col-form-label(for='item') Item
+          .col-sm-5
+            input.form-control(type='text', name='item', id='item' placeholder='Item to donate' required)
+        .form-group.row
+          label.col-sm-2.col-form-label(for='donatedby') Donor name
+          .col-sm-5
+            input.form-control(type='text', name='donatedby', id='donatedby' placeholder='Anonymous')
+
+        .form-group.row
+          label.col-sm-2.col-form-label(for='photo') Photo of Item
+          .col-sm-7
+            input(type='file' name='photo')
+        .form-group.row
+          br
+          .col-sm-offset-2.col-sm-6
+            button.btn.btn-success(type='submit')
+              i.fa.fa-heartbeat
+              | Offer Item

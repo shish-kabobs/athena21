@@ -17,8 +17,20 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 const sass = require('node-sass-middleware');
 const multer = require('multer');
+const expressValidator = require('express-validator')
 
-const upload = multer({ dest: path.join(__dirname, 'uploads') });
+
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, path.join(__dirname, 'uploads'))
+    },
+    filename: function (req, file, cb) {
+        cb(null, Date.now() + path.extname(file.originalname)) //Appending extension
+    }
+})
+
+const upload = multer({ storage: storage });
+
 
 /**
  * Load environment variables from .env file, where API keys and passwords are configured.
@@ -33,6 +45,7 @@ const userController = require('./controllers/user');
 const apiController = require('./controllers/api');
 const contactController = require('./controllers/contact');
 const donationController = require('./controllers/donation');
+const donateController = require('./controllers/donate');
 
 /**
  * API keys and Passport configuration.
@@ -73,6 +86,7 @@ app.use(sass({
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(expressValidator());
 app.use(session({
   resave: true,
   saveUninitialized: true,
@@ -87,7 +101,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 app.use((req, res, next) => {
-  if (req.path === '/api/upload') {
+  if (req.path === '/api/upload' || req.path === '/donate') {
     // Multer multipart/form-data handling needs to occur before the Lusca CSRF check.
     next();
   } else {
@@ -145,6 +159,8 @@ app.post('/account/password', passportConfig.isAuthenticated, userController.pos
 app.post('/account/delete', passportConfig.isAuthenticated, userController.postDeleteAccount);
 app.get('/account/unlink/:provider', passportConfig.isAuthenticated, userController.getOauthUnlink);
 app.get('/donations', donationController.getDonations);
+app.get('/donate', donateController.getDonate);
+app.post('/donate', upload.single('photo'), donateController.postDonate);
 
 /**
  * API examples routes.
