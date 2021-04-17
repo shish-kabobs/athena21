@@ -4,9 +4,16 @@ block content
   h1 Pending Donations
   p.lead Here is what local NHS supporters are offering.
   hr
-
-  ul
-    for donation in donations
-      li= donation.item
-      li = donation.photo
-      li Donated by = donation.donatedby
+  .row  
+    .col-sm-6
+      for donation in donations
+        .form-group.row
+          .col-sm-3 Donation Item
+          .col-sm-3=donation.item
+        .form-group.row
+          .col-sm-3 Donation Photo
+          .col-sm-3=donation.photo
+        .form-group.row
+          .col-sm-3 Donated by
+          .col-sm-3=donation.donatedby
+        hr
