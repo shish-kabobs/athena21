@@ -3,19 +3,38 @@ extends layout
 block content
   h1 Pending Donations
   p.lead Here is what local NHS supporters are offering.
-  hr
-  .row  
-    .col-sm-6
-      for donation in donations
-        .form-group.row
-          .col-sm-3 Donation Item
-          .col-sm-3=donation.item
-        .form-group.row
-          .col-sm-3 Donation Photo
-          .col-sm-3
-            if (donation.photo) 
-              img(src=donation.photo, height='200')
-        .form-group.row
-          .col-sm-3 Donated by
-          .col-sm-3=donation.donatedby
-        hr
+  hr 
+  if (user.profile.name === "LeedsTH-Charity")
+    .row  
+      .col-sm-6
+        each donation in donations
+          .form-group.row
+            .col-sm-3 Donation Item
+            .col-sm-3=donation.item
+          .form-group.row
+            .col-sm-3 Donation Photo
+            .col-sm-3
+              if (donation.photo) 
+                img(src=donation.photo, height='200')
+          .form-group.row
+            .col-sm-3 Donated by
+            .col-sm-3=donation.donatedby
+          hr
+  
+  else 
+    .row  
+      .col-sm-6
+        each donation in donations 
+          if (donation.donorId === user._id)
+            .form-group.row
+              .col-sm-3 Donation Item
+              .col-sm-3=donation.item
+            .form-group.row
+              .col-sm-3 Donation Photo
+              .col-sm-3
+                if (donation.photo) 
+                  img(src=donation.photo, height='200')
+            .form-group.row
+              .col-sm-3 Donated by
+              .col-sm-3=donation.donatedby
+            hr
