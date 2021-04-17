@@ -33,6 +33,7 @@ const userController = require('./controllers/user');
 const apiController = require('./controllers/api');
 const contactController = require('./controllers/contact');
 const donationController = require('./controllers/donation');
+const donateController = require('./controllers/donate')
 
 /**
  * API keys and Passport configuration.
@@ -145,6 +146,8 @@ app.post('/account/password', passportConfig.isAuthenticated, userController.pos
 app.post('/account/delete', passportConfig.isAuthenticated, userController.postDeleteAccount);
 app.get('/account/unlink/:provider', passportConfig.isAuthenticated, userController.getOauthUnlink);
 app.get('/donations', donationController.getDonations);
+app.get('/donate', donateController.getDonate);
+app.post('/donate', donateController.postDonate)
 
 /**
  * API examples routes.
