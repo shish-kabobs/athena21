@@ -28,7 +28,7 @@ exports.postDonate = (req, res, next) => {
         res.redirect('/donate');
     }
     if (!req.file) {
-        req.flash('errors', { msg: 'Please choose a file of the item to upload' });
+        req.flash('errors', { msg: 'Please choose an image of the item to share' });
         res.redirect('/donate');
     }
     const newDon = new Donation();
