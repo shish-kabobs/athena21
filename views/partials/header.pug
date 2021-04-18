@@ -26,6 +26,9 @@
           li.nav-item(class=(title === 'Create Account') ? 'active' : undefined)
             a.nav-link(href='/signup') Create Account
         else
+          .row
+            a.nav-link(href='/karma') 10 
+              i.fa.fa-star(aria-hidden='true')
           li.dropdown(class=(title === 'Account Management') ? 'active' : undefined).nav-item
             a.dropdown-toggle.nav-link(href='#', data-toggle='dropdown')
               if user.profile.picture

@@ -1,0 +1,12 @@
+extends layout
+
+
+block content
+  .page-header
+    h3 Karma Points
+    .container
+     form.form-horizontal(action='/donate', enctype='multipart/form-data', method='POST')
+        input(type='hidden', name='_csrf', value=_csrf)
+        .form-group.row
+          p 
+          | The more you donate, the higher your karma points! The higher your karma points, the better person you are? :eyes:

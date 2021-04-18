@@ -46,7 +46,8 @@ const apiController = require('./controllers/api');
 const contactController = require('./controllers/contact');
 const donationController = require('./controllers/donation');
 const donateController = require('./controllers/donate');
-const shopController = require('./controllers/shop')
+const shopController = require('./controllers/shop');
+const karmaController = require('./controllers/karma')
 
 /**
  * API keys and Passport configuration.
@@ -164,6 +165,7 @@ app.get('/donations', donationController.getDonations);
 app.get('/donate', donateController.getDonate);
 app.post('/donate', upload.single('photo'), donateController.postDonate);
 app.get('/shop', shopController.getShop);
+app.get('/karma', karmaController.getKarma);
 
 /**
  * API examples routes.
