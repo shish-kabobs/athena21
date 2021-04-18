@@ -37,10 +37,11 @@ exports.postDonate = (req, res, next) => {
     newDon.status = 'Pending';
 
     newDon.photo = `/uploads/${req.file.filename}`;
+    newDon.donorId = req.user._id;
 
     newDon.save((err) => {
         if (err) { return next(err); }
         req.flash('success', { msg: 'Success! You have uploaded an item.' });
-        res.redirect('/');
+        res.redirect('/donate');
     });
 };
