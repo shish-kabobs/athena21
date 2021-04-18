@@ -21,12 +21,12 @@ const expressValidator = require('express-validator')
 
 
 const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, path.join(__dirname, 'uploads'))
-    },
-    filename: function (req, file, cb) {
-        cb(null, Date.now() + path.extname(file.originalname)) //Appending extension
-    }
+  destination: function (req, file, cb) {
+    cb(null, path.join(__dirname, 'uploads'))
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + path.extname(file.originalname)) //Appending extension
+  }
 })
 
 const upload = multer({ storage: storage });
@@ -46,6 +46,7 @@ const apiController = require('./controllers/api');
 const contactController = require('./controllers/contact');
 const donationController = require('./controllers/donation');
 const donateController = require('./controllers/donate');
+const shopController = require('./controllers/shop')
 
 /**
  * API keys and Passport configuration.
@@ -162,6 +163,7 @@ app.get('/account/unlink/:provider', passportConfig.isAuthenticated, userControl
 app.get('/donations', donationController.getDonations);
 app.get('/donate', donateController.getDonate);
 app.post('/donate', upload.single('photo'), donateController.postDonate);
+app.get('/shop', shopController.getShop);
 
 /**
  * API examples routes.
