@@ -1,4 +1,4 @@
-.navbar.navbar-light.fixed-top.navbar-expand-lg.bg-light
+.navbar.navbar-dark.fixed-top.navbar-expand-lg.bg-dark
   .container
     a.navbar-brand(href='/')
       img(src='https://nhs-prod.global.ssl.fastly.net/binaries/content/gallery/website/about-nhs-digital/corporate-information-and-documents/nhs-digitals-style-guidelines/logos/nhs-digital-logo_nhs-blue_left.svg', style='width:50px;height:50px;')
@@ -10,11 +10,15 @@
       ul.nav.navbar-nav
         li.nav-item(class=(title === 'Home') ? 'active' : undefined)
           a.nav-link(href='/') Home
+        li.nav-item(class=(title === 'About') ? 'active' : undefined)
+          a.nav-link(href='/about') About
         if user
           li.nav-item(class=(title === 'Donations') ? 'active' : undefined)
             a.nav-link(href='/donations') Pending donations
           li.nav-item(class=(title === 'Donate') ? 'active' : undefined)
             a.nav-link(href='/donate') Donate
+        li.nav-item(class=(title === 'Shop') ? 'active' : undefined)
+            a.nav-link(href='/shop') Shop
         li.nav-item(class=(title === 'Contact') ? 'active' : undefined)
           a.nav-link(href='/contact') Contact
       ul.nav.navbar-nav.ml-auto
