@@ -22,18 +22,22 @@ block content
           .form-group.row
              .col-sm-3 Status
              .col-sm-3=donation.status
-             .col-sm-3
-             form#form_update_item(name="updatedonationstatus", method='post', action='/updatedonationstatus')
-                input(type='hidden', name='_csrf', value=_csrf)
-                input#input_name(type="hidden", placeholder="", name="_id", value=donation._id)
-                button.btn.btn-success(type='submit')
-                  | Accept
-             .col-sm-3
-             form#form_update_item(name="rejectdonation", method='post', action='/rejectdonation')
-                input(type='hidden', name='_csrf', value=_csrf)
-                input#input_name(type="hidden", placeholder="", name="_id", value=donation._id)
-                button.btn.btn-danger(type='submit')
-                  | Reject
+          .form-group.row
+            if (donation.status!="Accepted")
+              .col-sm-3
+              form#form_update_item(name="updatedonationstatus", method='post', action='/updatedonationstatus')
+                  input(type='hidden', name='_csrf', value=_csrf)
+                  input#input_name(type="hidden", placeholder="", name="_id", value=donation._id)
+                  button.btn.btn-success(type='submit')
+                    | Accept
+            if (donation.status!="Rejected")
+              .col-sm-3
+              form#form_update_item(name="rejectdonation", method='post', action='/rejectdonation')
+                  input(type='hidden', name='_csrf', value=_csrf)
+                  input#input_name(type="hidden", placeholder="", name="_id", value=donation._id)
+                  button.btn.btn-danger(type='submit')
+                    | Reject
+          hr
   else
     .row
       .col-sm-6
