@@ -1,4 +1,4 @@
-@import "themes/default/variables";
+@import "themes/flatly/variables";
 
 @import "node_modules/bootstrap/scss/bootstrap";
 @import "node_modules/@ladjs/bootstrap-social/bootstrap-social.scss";
@@ -7,7 +7,7 @@
 @import "node_modules/@fortawesome/fontawesome-free/scss/regular";
 @import "node_modules/@fortawesome/fontawesome-free/scss/solid";
 
-@import "themes/default/default";
+@import "themes/flatly/flatly";
 
 // Scaffolding
 // -------------------------
@@ -81,7 +81,7 @@ textarea {
 
 // button raised definition
 // this button uses gradient for the background
-$btn-raised-color: rgb(51, 51, 51);
+$btn-raised-color: rgb(11, 134, 118);
 $btn-raised-background: #f8f8f8;
 $btn-raised-border: rgb(204, 204, 204);
 $enable-gradients: true;
