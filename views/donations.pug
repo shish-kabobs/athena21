@@ -23,19 +23,22 @@ block content
              .col-sm-3 Status
              .col-sm-3=donation.status
              .col-sm-3
+             form#form_update_item(name="updatedonationstatus", method='post', action='/updatedonationstatus')
+                input(type='hidden', name='_csrf', value=_csrf)
+                input#input_name(type="hidden", placeholder="", name="_id", value=donation._id)
                 button.btn.btn-success(type='submit')
                   | Accept
              .col-sm-3
-               button.btn.btn-danger(type='submit')
-                 | Reject
-
-        hr
-
+             form#form_update_item(name="rejectdonation", method='post', action='/rejectdonation')
+                input(type='hidden', name='_csrf', value=_csrf)
+                input#input_name(type="hidden", placeholder="", name="_id", value=donation._id)
+                button.btn.btn-danger(type='submit')
+                  | Reject
   else
     .row
       .col-sm-6
         each donation in donations
-          if (donation.donorId === user._id)
+          if (donation.donorId==user._id)
             .form-group.row
               .col-sm-3 Donation Item
               .col-sm-3=donation.item
@@ -47,31 +50,7 @@ block content
             .form-group.row
               .col-sm-3 Donated by
               .col-sm-3=donation.donatedby
+            .form-group.row
+              .col-sm-3 Status
+              .col-sm-3=donation.status
             hr
-
-  hr
-  .row
-    .col-sm-6
-      for donation in donations
-        .form-group.row
-          .col-sm-3 Donation Item
-          .col-sm-3=donation.item
-        .form-group.row
-          .col-sm-3 Donation Photo
-          .col-sm-3
-            if (donation.photo)
-              img(src=donation.photo, height='200')
-        .form-group.row
-          .col-sm-3 Donated by
-          .col-sm-3=donation.donatedby
-        .form-group.row
-          .col-sm-3 Status
-          .col-sm-3=donation.status
-          .col-sm-3
-            button.btn.btn-success(type='submit')
-              | Accept
-          .col-sm-3
-            button.btn.btn-danger(type='submit')
-              | Reject
-
-        hr
